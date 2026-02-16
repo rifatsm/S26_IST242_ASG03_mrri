@@ -15,3 +15,14 @@ class TestManufacturer:
         m = Manufacturer("Ford", "USA")
         assert m.get_name == "Ford"
         assert m.get_country == "USA"
+
+    def test_constructor_2(self):
+        m = Manufacturer("Honda", "Japan")
+        assert m.get_name == "Honda"
+        assert m.get_country == "Japan"
+
+    def test_str(self):
+        m = Manufacturer("BMW", "Germany")
+        assert str(m) == "(BMW, Germany)"
+
+    
