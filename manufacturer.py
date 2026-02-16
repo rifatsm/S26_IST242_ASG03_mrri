@@ -8,7 +8,6 @@ class Manufacturer:
         self._name = name
         self._country = country
         
-
     # getters 
     @property
     def get_name(self) -> str:
@@ -18,5 +17,9 @@ class Manufacturer:
     def get_country(self) -> str:
         return self._country
 
-    def print_me(self):
-        print("Hello Manufacturer")
+    def __str__(self) -> str:
+        """
+        printing out the manufacturer objects
+        """
+        return f"({self._name}, {self._country})"
+        
