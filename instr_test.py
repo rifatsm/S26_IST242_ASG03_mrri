@@ -12,8 +12,8 @@ All tests must pass for full credit.
 import pytest
 from manufacturer import Manufacturer
 from auto_model import AutoModel
-# from vehicle import Vehicle
-# from sedan import Sedan
+from vehicle import Vehicle
+from sedan import Sedan
 # from truck import Truck
 # from garage import Garage
 
@@ -86,79 +86,79 @@ class TestAutoModel:
 #  Vehicle / abstract contract tests
 # ============================================================
 
-# class TestVehicleAbstract:
+class TestVehicleAbstract:
 
-#     def test_vehicle_cannot_be_instantiated(self):
-#         """Vehicle is abstract and should not be directly instantiable."""
-#         with pytest.raises(TypeError):
-#             Vehicle(
-#                 Manufacturer("X", "Y"),
-#                 AutoModel("Z", True, [2020]),
-#                 25.0,
-#             )
+    def test_vehicle_cannot_be_instantiated(self):
+        """Vehicle is abstract and should not be directly instantiable."""
+        with pytest.raises(TypeError):
+            Vehicle(
+                Manufacturer("X", "Y"),
+                AutoModel("Z", True, [2020]),
+                25.0,
+            )
 
-#     def test_subclass_must_implement_number_of_wheels(self):
-#         """A subclass that does NOT implement number_of_wheels should fail."""
+    def test_subclass_must_implement_number_of_wheels(self):
+        """A subclass that does NOT implement number_of_wheels should fail."""
 
-#         # This incomplete subclass should raise TypeError on instantiation
-#         with pytest.raises(TypeError):
+        # This incomplete subclass should raise TypeError on instantiation
+        with pytest.raises(TypeError):
 
-#             class Incomplete(Vehicle):
-#                 pass
+            class Incomplete(Vehicle):
+                pass
 
-#             Incomplete(
-#                 Manufacturer("X", "Y"),
-#                 AutoModel("Z", True, [2020]),
-#                 25.0,
-#             )
+            Incomplete(
+                Manufacturer("X", "Y"),
+                AutoModel("Z", True, [2020]),
+                25.0,
+            )
 
 
 # ============================================================
 #  Sedan tests
 # ============================================================
 
-# class TestSedan:
+class TestSedan:
 
-#     @pytest.fixture
-#     def civic(self):
-#         return Sedan(
-#             Manufacturer("Honda", "Japan"),
-#             AutoModel("Civic", False, [1996, 1997, 1998]),
-#             28.0,
-#         )
+    @pytest.fixture
+    def civic(self):
+        return Sedan(
+            Manufacturer("Honda", "Japan"),
+            AutoModel("Civic", False, [1996, 1997, 1998]),
+            28.0,
+        )
 
-#     def test_number_of_wheels(self, civic):
-#         assert civic.number_of_wheels() == 4
+    def test_number_of_wheels(self, civic):
+        assert civic.number_of_wheels() == 4
 
-#     def test_release_year(self, civic):
-#         assert civic.release_year == 1996
+    def test_release_year(self, civic):
+        assert civic.release_year == 1996
 
-#     def test_mpg(self, civic):
-#         assert civic.mpg == pytest.approx(28.0)
+    def test_mpg(self, civic):
+        assert civic.mpg == pytest.approx(28.0)
 
-#     def test_manufacturer(self, civic):
-#         assert civic.manufacturer.name == "Honda"
-#         assert civic.manufacturer.country == "Japan"
+    def test_manufacturer(self, civic):
+        assert civic.manufacturer.name == "Honda"
+        assert civic.manufacturer.country == "Japan"
 
-#     def test_model_name(self, civic):
-#         assert civic.model.name == "Civic"
+    def test_model_name(self, civic):
+        assert civic.model.name == "Civic"
 
-#     def test_how_far_with(self, civic):
-#         assert civic.how_far_with(10) == pytest.approx(280.0)
-#         assert civic.how_far_with(0) == pytest.approx(0.0)
+    def test_how_far_with(self, civic):
+        assert civic.how_far_with(10) == pytest.approx(280.0)
+        assert civic.how_far_with(0) == pytest.approx(0.0)
 
-#     def test_str_contains_required_parts(self, civic):
-#         s = str(civic)
-#         assert "(Honda, Japan)" in s
-#         assert "Civic" in s
-#         assert "28.00" in s
+    def test_str_contains_required_parts(self, civic):
+        s = str(civic)
+        assert "(Honda, Japan)" in s
+        assert "Civic" in s
+        assert "28.00" in s
 
-#     def test_str_does_not_contain_dually(self, civic):
-#         s = str(civic)
-#         assert "dually" not in s.lower()
+    def test_str_does_not_contain_dually(self, civic):
+        s = str(civic)
+        assert "dually" not in s.lower()
 
-#     def test_is_instance_of_vehicle(self, civic):
-#         assert isinstance(civic, Vehicle)
+    def test_is_instance_of_vehicle(self, civic):
+        assert isinstance(civic, Vehicle)
 
 
 # ============================================================
