@@ -13,15 +13,15 @@ class AutoModel:
         self._years = list(years) # defensive copy
 
     @property
-    def get_name(self) -> str:
+    def name(self) -> str:
         return self._name
 
     @property
-    def get_in_production(self) -> bool:
+    def in_production(self) -> bool:
         return self._in_production
 
     @property
-    def get_years(self) -> list[int]:
+    def years(self) -> list[int]:
         return list(self._years) # return a copy
     
     def __str__(self) -> str:
