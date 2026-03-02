@@ -8,6 +8,8 @@ class AutoModel:
             name: str, 
             in_production: bool, 
             years: list[int]):
+        if not years:
+            raise ValueError("The years list must be not empty.")
         self._name = name
         self._in_production = in_production
         self._years = list(years) # defensive copy

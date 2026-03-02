@@ -10,7 +10,7 @@ from sedan import Sedan
 def main():
    s = Sedan(
             Manufacturer("Honda", "Japan"),
-            AutoModel("Civic", False, [1996, 1997, 1998]),
+            AutoModel("Civic", False, []),
             28,
         )
    print(s)
