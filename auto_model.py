@@ -24,6 +24,13 @@ class AutoModel:
     def years(self) -> list[int]:
         return list(self._years) # return a copy
     
+    @property
+    def first_year(self) -> int:
+        """
+        Returns the first (earliest) production year
+        """
+        return self._years[0]
+    
     def __str__(self) -> str:
         return f"{self._name} in production = {self._in_production},  release year: {self._years[0]}"
     
