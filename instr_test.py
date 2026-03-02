@@ -14,7 +14,7 @@ from manufacturer import Manufacturer
 from auto_model import AutoModel
 from vehicle import Vehicle
 from sedan import Sedan
-# from truck import Truck
+from truck import Truck
 # from garage import Garage
 
 
@@ -165,66 +165,66 @@ class TestSedan:
 #  Truck tests
 # ============================================================
 
-# class TestTruck:
+class TestTruck:
 
-#     @pytest.fixture
-#     def f150(self):
-#         return Truck(
-#             Manufacturer("Ford", "USA"),
-#             AutoModel("F150", True, [2020, 2021, 2022]),
-#             20.0,
-#         )
+    @pytest.fixture
+    def f150(self):
+        return Truck(
+            Manufacturer("Ford", "USA"),
+            AutoModel("F150", True, [2020, 2021, 2022]),
+            20.0, # is_dually is absent, defaulted to False
+        )
 
-#     @pytest.fixture
-#     def tundra_dually(self):
-#         return Truck(
-#             Manufacturer("Toyota", "Japan"),
-#             AutoModel("Tundra", False, [1987, 1988]),
-#             30.0,
-#             is_dually=True,
-#         )
+    @pytest.fixture
+    def tundra_dually(self):
+        return Truck(
+            Manufacturer("Toyota", "Japan"),
+            AutoModel("Tundra", False, [1987, 1988]),
+            30.0,
+            is_dually=True,     # explicitly set to True
+        )
 
-#     # --- default (not dually) ---
+    # --- default (not dually) ---
 
-#     def test_default_not_dually(self, f150):
-#         assert f150.is_dually is False
+    def test_default_not_dually(self, f150):
+        assert f150.is_dually is False
 
-#     def test_wheels_non_dually(self, f150):
-#         assert f150.number_of_wheels() == 4
+    def test_wheels_non_dually(self, f150):
+        assert f150.number_of_wheels() == 4
 
-#     def test_release_year_f150(self, f150):
-#         assert f150.release_year == 2020
+    def test_release_year_f150(self, f150):
+        assert f150.release_year == 2020
 
-#     def test_str_non_dually(self, f150):
-#         s = str(f150)
-#         assert "(Ford, USA)" in s
-#         assert "F150" in s
-#         assert "20.00" in s
-#         assert "False" in s
+    def test_str_non_dually(self, f150):
+        s = str(f150)
+        assert "(Ford, USA)" in s
+        assert "F150" in s
+        assert "20.00" in s
+        assert "False" in s
 
-#     # --- dually ---
+    # --- dually ---
 
-#     def test_is_dually_true(self, tundra_dually):
-#         assert tundra_dually.is_dually is True
+    def test_is_dually_true(self, tundra_dually):
+        assert tundra_dually.is_dually is True
 
-#     def test_wheels_dually(self, tundra_dually):
-#         assert tundra_dually.number_of_wheels() == 6
+    def test_wheels_dually(self, tundra_dually):
+        assert tundra_dually.number_of_wheels() == 6
 
-#     def test_release_year_tundra(self, tundra_dually):
-#         assert tundra_dually.release_year == 1987
+    def test_release_year_tundra(self, tundra_dually):
+        assert tundra_dually.release_year == 1987
 
-#     def test_str_dually(self, tundra_dually):
-#         s = str(tundra_dually)
-#         assert "(Toyota, Japan)" in s
-#         assert "Tundra" in s
-#         assert "30.00" in s
-#         assert "True" in s
+    def test_str_dually(self, tundra_dually):
+        s = str(tundra_dually)
+        assert "(Toyota, Japan)" in s
+        assert "Tundra" in s
+        assert "30.00" in s
+        assert "True" in s
 
-#     def test_how_far_with(self, tundra_dually):
-#         assert tundra_dually.how_far_with(5) == pytest.approx(150.0)
+    def test_how_far_with(self, tundra_dually):
+        assert tundra_dually.how_far_with(5) == pytest.approx(150.0)
 
-#     def test_is_instance_of_vehicle(self, f150):
-#         assert isinstance(f150, Vehicle)
+    def test_is_instance_of_vehicle(self, f150):
+        assert isinstance(f150, Vehicle)
 
 
 # ============================================================
