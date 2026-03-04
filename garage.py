@@ -14,7 +14,7 @@ class Garage:
     @property
     def vehicles(self) -> list[Vehicle]:
         """returns a copy of the internal list (to protect encapsulation)"""
-        return list[self._vehicles]
+        return list(self._vehicles)
 
     def add_vehicle(self, vehicle: Vehicle) -> None:
         """add a vehicle to the list"""
@@ -26,3 +26,7 @@ class Garage:
 
     def sort_by_release_year(self):
         self._vehicles.sort()
+
+    def __str__(self) -> str:
+        """returns each vehicle on its own line"""
+        return "\n".join(str(v) for v in self._vehicles) 

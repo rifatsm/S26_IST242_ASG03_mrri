@@ -15,7 +15,7 @@ from auto_model import AutoModel
 from vehicle import Vehicle
 from sedan import Sedan
 from truck import Truck
-# from garage import Garage
+from garage import Garage
 
 
 # ============================================================
@@ -231,194 +231,194 @@ class TestTruck:
 #  Comparable / ordering tests
 # ============================================================
 
-# class TestVehicleComparison:
+class TestVehicleComparison:
 
-#     @pytest.fixture
-#     def sedan_1996(self):
-#         return Sedan(
-#             Manufacturer("Honda", "Japan"),
-#             AutoModel("Civic", False, [1996, 1997]),
-#             28.0,
-#         )
+    @pytest.fixture
+    def sedan_1996(self):
+        return Sedan(
+            Manufacturer("Honda", "Japan"),
+            AutoModel("Civic", False, [1996, 1997]),
+            28.0,
+        )
 
-#     @pytest.fixture
-#     def sedan_2015(self):
-#         return Sedan(
-#             Manufacturer("BMW", "Germany"),
-#             AutoModel("M3 Limited", False, [2015, 2016]),
-#             30.0,
-#         )
+    @pytest.fixture
+    def sedan_2015(self):
+        return Sedan(
+            Manufacturer("BMW", "Germany"),
+            AutoModel("M3 Limited", False, [2015, 2016]),
+            30.0,
+        )
 
-#     @pytest.fixture
-#     def truck_2020(self):
-#         return Truck(
-#             Manufacturer("Ford", "USA"),
-#             AutoModel("F150", True, [2020, 2021]),
-#             20.0,
-#         )
+    @pytest.fixture
+    def truck_2020(self):
+        return Truck(
+            Manufacturer("Ford", "USA"),
+            AutoModel("F150", True, [2020, 2021]),
+            20.0,
+        )
 
-#     @pytest.fixture
-#     def truck_1996(self):
-#         return Truck(
-#             Manufacturer("Chevy", "USA"),
-#             AutoModel("Silverado", False, [1996]),
-#             18.0,
-#         )
+    @pytest.fixture
+    def truck_1996(self):
+        return Truck(
+            Manufacturer("Chevy", "USA"),
+            AutoModel("Silverado", False, [1996]),
+            18.0,
+        )
 
-#     def test_lt(self, sedan_1996, sedan_2015):
-#         assert sedan_1996 < sedan_2015
+    def test_lt(self, sedan_1996, sedan_2015):
+        assert sedan_1996 < sedan_2015
 
-#     def test_not_lt_when_greater(self, sedan_2015, sedan_1996):
-#         assert not (sedan_2015 < sedan_1996)
+    def test_not_lt_when_greater(self, sedan_2015, sedan_1996):
+        assert not (sedan_2015 < sedan_1996)
 
-#     def test_eq_same_year(self, sedan_1996, truck_1996):
-#         assert sedan_1996 == truck_1996
+    def test_eq_same_year(self, sedan_1996, truck_1996):
+        assert sedan_1996 == truck_1996
 
-#     def test_not_eq_different_year(self, sedan_1996, sedan_2015):
-#         assert sedan_1996 != sedan_2015
+    def test_not_eq_different_year(self, sedan_1996, sedan_2015):
+        assert sedan_1996 != sedan_2015
 
-#     def test_gt(self, truck_2020, sedan_2015):
-#         assert truck_2020 > sedan_2015
+    def test_gt(self, truck_2020, sedan_2015):
+        assert truck_2020 > sedan_2015
 
-#     def test_sorted_order(self, sedan_1996, sedan_2015, truck_2020):
-#         vehicles = [truck_2020, sedan_1996, sedan_2015]
-#         result = sorted(vehicles)
-#         assert result[0].release_year == 1996
-#         assert result[1].release_year == 2015
-#         assert result[2].release_year == 2020
+    def test_sorted_order(self, sedan_1996, sedan_2015, truck_2020):
+        vehicles = [truck_2020, sedan_1996, sedan_2015]
+        result = sorted(vehicles)
+        assert result[0].release_year == 1996
+        assert result[1].release_year == 2015
+        assert result[2].release_year == 2020
 
 
 # ============================================================
 #  Garage tests
 # ============================================================
 
-# class TestGarage:
+class TestGarage:
 
-#     @pytest.fixture
-#     def full_garage(self):
-#         g = Garage()
-#         g.add_vehicle(
-#             Truck(
-#                 Manufacturer("Ford", "USA"),
-#                 AutoModel("F150", True, [2020, 2021, 2022]),
-#                 20.0,
-#             )
-#         )
-#         g.add_vehicle(
-#             Sedan(
-#                 Manufacturer("Honda", "Japan"),
-#                 AutoModel("Civic", False, [1996, 1997, 1998]),
-#                 28.0,
-#             )
-#         )
-#         g.add_vehicle(
-#             Sedan(
-#                 Manufacturer("BMW", "Germany"),
-#                 AutoModel("M3 Limited", False, [2015, 2016, 2017, 2018]),
-#                 30.0,
-#             )
-#         )
-#         g.add_vehicle(
-#             Truck(
-#                 Manufacturer("Toyota", "Japan"),
-#                 AutoModel("Tundra", False, [1987, 1988]),
-#                 30.0,
-#                 is_dually=True,
-#             )
-#         )
-#         return g
+    @pytest.fixture
+    def full_garage(self):
+        g = Garage()
+        g.add_vehicle(
+            Truck(
+                Manufacturer("Ford", "USA"),
+                AutoModel("F150", True, [2020, 2021, 2022]),
+                20.0,
+            )
+        )
+        g.add_vehicle(
+            Sedan(
+                Manufacturer("Honda", "Japan"),
+                AutoModel("Civic", False, [1996, 1997, 1998]),
+                28.0,
+            )
+        )
+        g.add_vehicle(
+            Sedan(
+                Manufacturer("BMW", "Germany"),
+                AutoModel("M3 Limited", False, [2015, 2016, 2017, 2018]),
+                30.0,
+            )
+        )
+        g.add_vehicle(
+            Truck(
+                Manufacturer("Toyota", "Japan"),
+                AutoModel("Tundra", False, [1987, 1988]),
+                30.0,
+                is_dually=True,
+            )
+        )
+        return g
 
-#     def test_add_vehicle(self):
-#         g = Garage()
-#         assert len(g.vehicles) == 0
-#         g.add_vehicle(
-#             Sedan(
-#                 Manufacturer("A", "B"),
-#                 AutoModel("C", True, [2020]),
-#                 25.0,
-#             )
-#         )
-#         assert len(g.vehicles) == 1
+    def test_add_vehicle(self):
+        g = Garage()
+        assert len(g.vehicles) == 0
+        g.add_vehicle(
+            Sedan(
+                Manufacturer("A", "B"),
+                AutoModel("C", True, [2020]),
+                25.0,
+            )
+        )
+        assert len(g.vehicles) == 1
 
-#     def test_vehicles_returns_copy(self):
-#         """Mutating the returned list should NOT affect the garage."""
-#         g = Garage()
-#         g.add_vehicle(
-#             Sedan(
-#                 Manufacturer("A", "B"),
-#                 AutoModel("C", True, [2020]),
-#                 25.0,
-#             )
-#         )
-#         external = g.vehicles
-#         external.clear()
-#         assert len(g.vehicles) == 1
+    def test_vehicles_returns_copy(self):
+        """Mutating the returned list should NOT affect the garage."""
+        g = Garage()
+        g.add_vehicle(
+            Sedan(
+                Manufacturer("A", "B"),
+                AutoModel("C", True, [2020]),
+                25.0,
+            )
+        )
+        external = g.vehicles
+        external.clear()
+        assert len(g.vehicles) == 1
 
-#     def test_empty_garage(self):
-#         g = Garage()
-#         g.add_vehicle(
-#             Sedan(
-#                 Manufacturer("A", "B"),
-#                 AutoModel("C", True, [2020]),
-#                 25.0,
-#             )
-#         )
-#         g.empty_garage()
-#         assert len(g.vehicles) == 0
+    def test_empty_garage(self):
+        g = Garage()
+        g.add_vehicle(
+            Sedan(
+                Manufacturer("A", "B"),
+                AutoModel("C", True, [2020]),
+                25.0,
+            )
+        )
+        g.empty_garage()
+        assert len(g.vehicles) == 0
 
-#     def test_empty_garage_does_not_set_none(self):
-#         """After emptying, add_vehicle should still work (list not None)."""
-#         g = Garage()
-#         g.add_vehicle(
-#             Sedan(
-#                 Manufacturer("A", "B"),
-#                 AutoModel("C", True, [2020]),
-#                 25.0,
-#             )
-#         )
-#         g.empty_garage()
-#         # If the internal list were None, this would raise an AttributeError
-#         g.add_vehicle(
-#             Sedan(
-#                 Manufacturer("D", "E"),
-#                 AutoModel("F", False, [2021]),
-#                 30.0,
-#             )
-#         )
-#         assert len(g.vehicles) == 1
+    def test_empty_garage_does_not_set_none(self):
+        """After emptying, add_vehicle should still work (list not None)."""
+        g = Garage()
+        g.add_vehicle(
+            Sedan(
+                Manufacturer("A", "B"),
+                AutoModel("C", True, [2020]),
+                25.0,
+            )
+        )
+        g.empty_garage()
+        # If the internal list were None, this would raise an AttributeError
+        g.add_vehicle(
+            Sedan(
+                Manufacturer("D", "E"),
+                AutoModel("F", False, [2021]),
+                30.0,
+            )
+        )
+        assert len(g.vehicles) == 1
 
-#     def test_sort_by_release_year(self, full_garage):
-#         full_garage.sort_by_release_year()
-#         vehicles = full_garage.vehicles
-#         years = [v.release_year for v in vehicles]
-#         assert years == sorted(years)
+    def test_sort_by_release_year(self, full_garage):
+        full_garage.sort_by_release_year()
+        vehicles = full_garage.vehicles
+        years = [v.release_year for v in vehicles]
+        assert years == sorted(years)
 
-#     def test_sort_order_specific(self, full_garage):
-#         full_garage.sort_by_release_year()
-#         vehicles = full_garage.vehicles
-#         assert vehicles[0].release_year == 1987
-#         assert vehicles[1].release_year == 1996
-#         assert vehicles[2].release_year == 2015
-#         assert vehicles[3].release_year == 2020
+    def test_sort_order_specific(self, full_garage):
+        full_garage.sort_by_release_year()
+        vehicles = full_garage.vehicles
+        assert vehicles[0].release_year == 1987
+        assert vehicles[1].release_year == 1996
+        assert vehicles[2].release_year == 2015
+        assert vehicles[3].release_year == 2020
 
-#     def test_str_contains_all_vehicles(self, full_garage):
-#         s = str(full_garage)
-#         assert "F150" in s
-#         assert "Civic" in s
-#         assert "M3 Limited" in s
-#         assert "Tundra" in s
+    def test_str_contains_all_vehicles(self, full_garage):
+        s = str(full_garage)
+        assert "F150" in s
+        assert "Civic" in s
+        assert "M3 Limited" in s
+        assert "Tundra" in s
 
-#     def test_str_vehicles_on_separate_lines(self, full_garage):
-#         s = str(full_garage)
-#         lines = s.strip().split("\n")
-#         assert len(lines) == 4
+    def test_str_vehicles_on_separate_lines(self, full_garage):
+        s = str(full_garage)
+        lines = s.strip().split("\n")
+        assert len(lines) == 4
 
 
 # ============================================================
 #  Integration / end-to-end test
 # ============================================================
 
-# class TestIntegration:
+class TestIntegration:
 
     def test_full_workflow(self):
         """Mirrors the main.py scenario end-to-end."""
