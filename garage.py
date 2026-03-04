@@ -23,3 +23,6 @@ class Garage:
     def empty_garage(self):
         """empties the garage of all the vehicles"""
         self._vehicles.clear()
+
+    def sort_by_release_year(self):
+        self._vehicles.sort()
