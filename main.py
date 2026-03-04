@@ -10,11 +10,12 @@ from sedan import Sedan
 def main():
    s = Sedan(
             Manufacturer("Honda", "Japan"),
-            AutoModel("Civic", False, []),
+            AutoModel("Civic", False, [2020, 2021]),
             28,
         )
-   print(s)
-    
+   print()
+   print(s.how_far_with(10)) # call concrete method
+   print()    
 
 if __name__ == "__main__":
     main()
